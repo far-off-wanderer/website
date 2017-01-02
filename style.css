@@ -32,7 +32,7 @@ body {
 
 main {
     animation: 4s normal ease-out main-fadein3d;
-    background-image: url('http://i.imgur.com/2HrCNPn.jpg');
+    background-image: url('//i.imgur.com/2HrCNPn.jpg');
     background-size: cover;
     text-shadow: 0 0 0.1rem black, 0 0 0.2rem black;
 }
