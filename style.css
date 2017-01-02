@@ -12,7 +12,9 @@ html {
     -ms-user-select: none;
     user-select: none;
     cursor: arrow;
-}25* {
+}
+
+* {
     cursor: default;
     box-sizing: border-box;
 }
