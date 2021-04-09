@@ -1,0 +1,35 @@
+﻿@page
+@model Far_Off_Wanderer.Website.Pages.AccountModel
+@{
+}
+<meta name='viewport' content='width=device-width'>
+
+<style>
+    form * {
+        display: block;
+    }
+</style>
+
+User: @(Request.HttpContext.User.Identity?.Name ?? "not logged in")
+
+<h1>login</h1>
+<form action="/user/login" method="post">
+    <input type="text" name="username" />
+    <input type="password" name="password" />
+    <input type="hidden" name="redirectto" value="/" />
+    <input type="submit" value="login" />
+</form>
+
+<h1>register</h1>
+<form action="/user/register" method="post">
+    <input type="text" name="username" />
+    <input type="password" name="password" />
+    <input type="hidden" name="redirectto" value="/" />
+    <input type="submit" value="register" />
+</form>
+
+<h1>logout</h1>
+<form action="/user/logout" method="post">
+    <input type="hidden" name="redirectto" value="/" />
+    <input type="submit" value="logout" />
+</form>

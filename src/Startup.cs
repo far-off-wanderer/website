@@ -1,8 +1,6 @@
+using Conesoft.Users;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace Far_Off_Wanderer.Website
 {
@@ -10,27 +8,24 @@ namespace Far_Off_Wanderer.Website
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddUsers("Conesoft Host", Conesoft.Hosting.Host.GlobalStorage / "Users");
+            services.AddRazorPages();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseRouting();
+            app.UseUsers();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapGet("/", async context =>
-            //    {
-            //        await context.Response.WriteAsync("Hello World!");
-            //    });
-            //});
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapRazorPages();
+            });
         }
     }
 }
